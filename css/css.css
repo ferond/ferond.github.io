@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+    font-family: arial, sans-serif;
+    background-color: rgb(97, 113, 255);
+    color: #fff;
+}
+
+body {
+    display: grid;
+    grid-template: minmax(13rem, auto) minmax(13rem, auto) minmax(13rem, auto) minmax(13rem, auto)/ 1fr 1fr 1fr; /* grid-template — сокращённый вариант комбинации grid-template-rows и grid-template-columns. свойства repeat(кол-во, размерность размерность) можно сокращать код для повторяющегося деление сетки. 
+    если задать более чем одну размерность, например repeat(2, 1fr 2fr) получиться 4 колонки с чередующимися фракциями 1-2-1-2. Возможно использование minmax(*, *).
+    repeat(auto-fill/fit, размерность) - втоматически заполяет строку таким количеством колонок, как это возможно с учетом заданной ширины auto-fit будет вести себя почти как auto-fill, но если есть только одна строка и есть место для дополнительных колонок, но нет элементов, которые можно вставить эти колонки, то тогда он сделает ширину пустых колонок равную нулю.*/
+
+    /* grid-auto-rows: - определяет высоту строки/ряда (вертикальная ось) grid-item`a по умолчанию.Возможно использование minmax(). */
+
+    /* grid-auto-columns: - определяет ширину коллонки (горизонтальная ось) grid-item`a по умолчанию. Возможно использование minmax().*/
+
+    grid-gap: 20px; /* grid-gap - [grid-row-gap / grid-column-gap] [определяет расстояния между строками/рядами] / [определяет расстояния между колонками] */
+
+    grid-auto-rows: column; /* Свойство grid-auto-flow [rows(по умолчанию) / column / dense] управляет автоматическим размещением элементов сетки без явного положения. */
+
+/* отступы от краёв родителя */
+    padding: 3rem 5rem;
+}
+
+header {
+    background-color: lightgrey;
+    grid-column: 1 / span 3;
+}
+
+nav {
+    background-color: rgb(255, 0, 157);
+    grid-column: 1 / span 3;
+    grid-row: 2;
+}
+
+/* Конец верхних блоков */
+
+.container {
+    display: grid;
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 2rem;
+    float: left;
+    grid-column: 1 / 2;
+    height: 500px;
+    background-color: rgb(20, 20, 20);
+}
+
+.sidebar aside {
+    font-size: 4rem;
+    background-color: rgb(230, 144, 122);
+    margin: 2rem 2rem;
+    padding: 2rem;
+}
+
+main {
+    background-color: rgb(0, 255, 13);
+    grid-column: 2 / span 2;
+}
+
+section {
+    background-color: #ff9f20;
+    margin: 3rem 2rem;
+    padding: 2rem;
+}
+
+img {
+    height: 10rem;
+}
+
+/* конец контентных блоков */
+
+footer {
+    background-color: lightgrey;
+    grid-column: 1 / span 3;
+    grid-row: 4;
+}
+
+/* типогорафия */
+
+h2 {
+    margin-top: 3rem;
+    font-size: 5rem;
+    text-align: center;
+}
+
+h3 {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+
+h4 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: justify;
+}
+
+figure {
+    float: right;
+    clear: both;
+    margin-left: 2rem;
+}
+
+figure p {
+    text-align: center;
+}
+
+header, nav, .sidebar, main, article, aside, footer, section {
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 1280px) {
+    html {
+        font-size: 9px;;
+    }
+
+    body {
+        grid-template: minmax(10rem, auto) minmax(10rem, auto) minmax(10rem, auto) minmax(10rem, auto)/ 1fr 1fr 1fr;
+        padding: 3rem 3rem;
+    }
+
+    .sidebar {
+        max-height: 430px;
+    }
+
+    h2 {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    html {
+        font-size: 8px;
+    }
+
+    body {
+        grid-template: minmax(9rem, auto) minmax(9rem, auto) minmax(9rem, auto) minmax(9rem, auto)/ 1fr 1fr 1fr;
+    }
+
+    .sidebar {
+        max-height: 380px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    html {
+        font-size: 6px;
+    }
+
+    body {
+        grid-template: minmax(8rem, auto) minmax(8rem, auto) minmax(8rem, auto)/ 1fr 1fr 1fr;
+        padding: 1rem 1rem;
+    }
+    .container {
+        grid-template: 1fr / 1fr 1fr;
+    }
+
+    main {
+        grid-column: 1 / span 3;
+    }
+
+    .sidebar {
+        position: static;
+        grid-column: 1 / span 3;
+        height: 300px;
+    }
+
+    footer {
+        grid-row: 4;
+    }
+
+    h2 {
+        margin-top: 1rem;
+    }
+}
